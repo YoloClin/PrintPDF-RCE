@@ -12,7 +12,7 @@ then
     docker build -t drupal_print_wkhtmltopdf .
     for i in $(seq 30000 30010); do
 	docker stop drupal_print_wkhtmltopdf_$i && docker rm drupal_print_wkhtmltopdf_$i
-	docker run -d -it -p 0.0.0.0:$i:80 --name drupal_print_wkhtmltopdf_$i -d drupal_print_wkhtmltopdf
+	docker run -d -it -p 0.0.0.0:$i:80 --restart always --name drupal_print_wkhtmltopdf_$i -d drupal_print_wkhtmltopdf
     done;
 
     for i in $(seq 30000 30010); do

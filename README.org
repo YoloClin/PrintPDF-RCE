@@ -1,0 +1,32 @@
+* Drupal w/ wkhtmltopdf
+** Introduction
+Have a drupal site? 
+Need to generate PDF copies of pages? 
+The 'Print' Module will help you, as it has with ~60,000 other +victims+ users.
+Print supports four backend PDF generation tools.
+This PoC focuses on the 'wkhtmltopdf' backend.
+
+** Instructions
+- Review the code for the wkhtmltopdf sub-module at [[print_pdf_wkhtmltopdf.pages.inc]]
+  - Execution of the function ~print_pdf_wkhtmltopdf_print_pdf_generate~ occurs as a result of ~curl http://localhost:12100/printpdf/1~
+- Understand how ~print_pdf_wkhtmltopdf_print_pdf_generate~ works, attempt to exploit
+- Vulnerability is public, no gooling of vulnerability specifics (that's cheating!)
+- Research on function calls, what they do and how they work is ok though.
+- Get Shell
+- Note: caching issues exist, incrementing node (1 in the above curl request) forces a fresh request
+
+** Sectalks setup
+A digital ocean box has been setup. 
+Use port range 30000-30200
+Once compromised please do not trash containers, but dumping the DB / stealing configs is cool.
+
+** Local Setup
+#+BEGIN_SRC bash
+git clone https://github.com/yoloClin/sectalks_print
+cd sectalks_print
+bash ./setup.sh
+curl localhost:12100/print/1
+#+END_SRC
+
+*** Docker
+follow 'Local Setup' but use docean-setup.sh

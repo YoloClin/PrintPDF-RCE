@@ -10,12 +10,12 @@ echo    # (optional) move to a new line
 if [[ $REPLY =~ ^Y$ ]]
 then
     docker build -t drupal_print_wkhtmltopdf .
-    for i in $(seq 30000 30010); do
+    for i in $(seq 30000 30200); do
 	docker stop drupal_print_wkhtmltopdf_$i && docker rm drupal_print_wkhtmltopdf_$i
 	docker run -d -it -p 0.0.0.0:$i:80 --restart always --name drupal_print_wkhtmltopdf_$i -d drupal_print_wkhtmltopdf
     done;
 
-    for i in $(seq 30000 30010); do
+    for i in $(seq 30000 30200); do
 	docker exec drupal_print_wkhtmltopdf_$i python /var/www/html/allow_anon_print_pdf.py
 	docker exec drupal_print_wkhtmltopdf_$i rm /var/www/html/allow_anon_print_pdf.py
     done

@@ -16,7 +16,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN php -r "readfile('https://github.com/drush-ops/drush/releases/download/8.1.18/drush.phar');" > drush && chmod +x drush && mv drush /usr/local/bin
-RUN sudo -u www-data drush site-install --db-url=sqlite://sites/default/files/.ht.sqlite -y
+RUN sudo -u www-data php -d sendmail_path=/bin/true /usr/local/bin/drush site-install --db-url=sqlite://sites/default/files/.ht.sqlite -y
 COPY wkhtmltopdf /var/www/html/sites/all/libraries/wkhtmltopdf
 RUN sudo -u www-data drush pm-download print-7.x-2.0
 RUN sudo -u www-data drush pm-enable print -y

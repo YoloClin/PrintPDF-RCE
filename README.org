@@ -17,7 +17,7 @@ This PoC focuses on the 'wkhtmltopdf' backend.
 
 ** Sectalks setup
 A digital ocean box has been setup. 
-Use port range 30000-30200. 
+Use port range 30000-30020. 
 Once compromised please do not trash containers. However, dumping the DB / stealing configs is cool.
 
 ** Local Setup
